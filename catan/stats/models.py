@@ -5,8 +5,8 @@ class Player(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     elo = models.IntegerField(default=1000)
-    games_played = modesl.IntegerField(default=0)
-    wins = modesl.IntegerField(default=0)
+    games_played = models.IntegerField(default=0)
+    wins = models.IntegerField(default=0)
 
 
 class Game(models.Model):
