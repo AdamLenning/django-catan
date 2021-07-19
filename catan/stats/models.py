@@ -1,3 +1,47 @@
 from django.db import models
 
-# Create your models here.
+
+class Player(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    elo = models.IntegerField(default=1000)
+    games_played = modesl.IntegerField(default=0)
+    wins = modesl.IntegerField(default=0)
+
+
+class Game(models.Model):
+    player_one = models.ForeignKey(Player, related_name="player_one", on_delete=models.SET_NULL, null=True)
+    player_one_prod = models.IntegerField(default=0)
+    player_one_vp = models.IntegerField(default=0)
+    player_one_dc = models.IntegerField(default=0)
+    player_one_stolen = models.IntegerField(default=0)
+    player_two = models.ForeignKey(Player, related_name="player_two", on_delete=models.SET_NULL, null=True)
+    player_two_prod = models.IntegerField(default=0)
+    player_two_vp = models.IntegerField(default=0)
+    player_two_dc = models.IntegerField(default=0)
+    player_two_stolen = models.IntegerField(default=0)
+    player_three = models.ForeignKey(Player, related_name="player_three", on_delete=models.SET_NULL, blank=True, null=True)
+    player_three_prod = models.IntegerField(blank=True, null=True)
+    player_three_vp = models.IntegerField(blank=True, null=True)
+    player_three_dc = models.IntegerField(blank=True, null=True)
+    player_three_stolen = models.IntegerField(blank=True, null=True)
+    player_four = models.ForeignKey(Player, related_name="player_four", on_delete=models.SET_NULL, blank=True, null=True)
+    player_four_prod = models.IntegerField(blank=True, null=True)
+    player_four_vp = models.IntegerField(blank=True, null=True)
+    player_four_dc = models.IntegerField(blank=True, null=True)
+    player_four_stolen = models.IntegerField(blank=True, null=True)
+    twos = models.IntegerField(default=0)
+    threes = models.IntegerField(default=0)
+    fours = models.IntegerField(default=0)
+    fives = models.IntegerField(default=0)
+    sixes = models.IntegerField(default=0)
+    sevens = models.IntegerField(default=0)
+    eights = models.IntegerField(default=0)
+    nines = models.IntegerField(default=0)
+    tens = models.IntegerField(default=0)
+    elevens = models.IntegerField(default=0)
+    twelves = models.IntegerField(default=0)
+    longest_road = models.ForeignKey(Player, on_delete=models.SET_NULL, related_name="longest_road", null=True) 
+    largest_army = models.ForeignKey(Player, on_delete=models.SET_NULL, related_name="largest_army", null=True) 
+    variant = models.BooleanField(default=False)
+    notes = models.TextField(blank=True, null=True)
